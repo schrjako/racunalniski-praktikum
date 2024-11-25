@@ -7,6 +7,7 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{amsthm}
+\usepackage{booktabs}
 
 % Nastavimo koliko prostora izpustimo pod napisom nad sliko ali tabelo.
 \setlength{\belowcaptionskip}{2mm}
@@ -34,6 +35,21 @@
 \newtheorem{definicija}[izrek]{Definicija}
 %\newtheorem{vaja}[izrek]{Vaja}
 }
+
+\newenvironment{magic}[3]{
+   \begin{table}
+      \centering
+      \caption{#2}
+      \label{#3}
+      % Začetek magičnega kvadrata
+      \Large
+      \begin{tabular}{|*{#1}{c|}}\hline
+}{
+      \end{tabular}
+      % Konec magičnega kvadrata
+   \end{table}
+}
+
 
 \begin{document}
 
@@ -90,6 +106,26 @@ Primer magičnega kvadrata reda 3 je prikazan v tabeli ?!?.
 %   3 & 5 & 7 \\\hline
 %   4 & 9 & 2 \\\hline
 % Konec magičnega kvadrata
+
+%\begin{table}
+%   \centering
+%   \caption{Magični kvadrat reda 3}
+%   \label{table:mag3_1}
+%   % Začetek magičnega kvadrata
+%   \Large
+%   \begin{tabular}{|c|c|c|}\hline
+%      8 & 1 & 6 \\\hline
+%      3 & 5 & 7 \\\hline
+%      4 & 9 & 2 \\\hline
+%   \end{tabular}
+%   % Konec magičnega kvadrata
+%\end{table}
+
+\begin{magic}{3}{Magični kvadrat reda 3}{table:mag3}
+      8 & 1 & 6 \\\hline
+      3 & 5 & 7 \\\hline
+      4 & 9 & 2 \\\hline
+\end{magic}
 
 \begin{definicija}
    Magični kvadrat reda $n$ je \emph{normalen}, če v njem nastopajo števila
@@ -187,10 +223,12 @@ simetričnih parov ($2+8+9+15$ in $3+5+12+14$), in še na nekaj drugih načinov.
 %
 % - napis nad tabelo: Dürerjev magični kvadrat $4\times 4$
 % - oznaka: table:durer
-%   16 &  3 &  2 & 13 \\\hline
-%    5 & 10 & 11 &  8 \\\hline
-%    9 &  6 &  7 & 12 \\\hline
-%    4 & 15 & 14 &  1 \\\hline
+\begin{magic}{4}{Dürerjev magični kvadrat $4\times 4$}{table:durer}
+   16 &  3 &  2 & 13 \\\hline
+    5 & 10 & 11 &  8 \\\hline
+    9 &  6 &  7 & 12 \\\hline
+    4 & 15 & 14 &  1 \\\hline
+\end{magic}
 
 Pasijonska fasada na katedrali Sagrada família v Barceloni
 (glej sliko ?? za fotografijo) vsebuje magični kvadrat reda 4.
@@ -294,10 +332,10 @@ iz kvadrata Lo Shu z zrcaljenjem preko sredinske vodoravne črte.
    \centering
    \caption{Število različnih normalnih magičnih kvadratov}
    \label{tab:stmagkvadr}
-   \begin{tabular}{|l|c|c|c|c|c|c|}
-            & \multicolumn{5}{|c|}{točna vrednost} & približek \\\hline
-            red & 1 & 2 & 3 & 4 & 5 & 6 \\\hline
-            število kvadratov & 1 & 0 & 1 & 880 & 275305224 & !! \\\hline
+   \begin{tabular}{lcccccc}\toprule
+            & \multicolumn{5}{c}{točna vrednost} & približek \\\midrule
+            red & 1 & 2 & 3 & 4 & 5 & 6 \\\midrule
+            število kvadratov & 1 & 0 & 1 & 880 & 275305224 & !! \\\bottomrule
    \end{tabular}
 \end{table}
 % Konec tabele
